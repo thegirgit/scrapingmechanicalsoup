@@ -12,14 +12,14 @@ browser.select_form()
 browser["txtUserName"] = rid
 browser["Password1"] = pwd
 
-browser.submit_selected()
+browser.submit_selected() #login
 
 
-submit = browser.get_current_page().find('input', id='ctl00_ContentPlaceHolder1_CtlMyLoans1_grdLoans_ctl02_Button1')
+submit = browser.get_current_page().find('input', id='ctl00_ContentPlaceHolder1_CtlMyLoans1_grdLoans_ctl02_Button1') 
 form = browser.select_form()
 form.choose_submit(submit)
-response = browser.submit_selected()
+response = browser.submit_selected() #REISSUE
 soup=BeautifulSoup(response.text,'html.parser')
-output = soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_CtlMyLoans1_grdLoans_ctl02_lblFine"})[0].string
-print(output)
+output = soup.findAll("span", {"id": "ctl00_ContentPlaceHolder1_CtlMyLoans1_grdLoans_ctl02_lblFine"})[0].string #displays finedue now
+print(output) #DISPLAY FINEDUE NOW
 
